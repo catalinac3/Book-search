@@ -1,3 +1,4 @@
+// For easy insertion of the book data
 export class Book {
   constructor(title, author, publishedDate) {
     this.title = title;
@@ -6,6 +7,7 @@ export class Book {
   }
 }
 
+// storage of all books available for search
 export const BookCollection = [
   new Book("Philosopher's Stone", "J. K. Rowling", 1997),
   new Book("Chamber of Secrets", "J. K. Rowling", 1998),
