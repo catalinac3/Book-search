@@ -2,7 +2,7 @@ import React from "react";
 import "./OutputBook.css";
 
 // element that will display a book data
-const OutputBook = (props) => {
+function OutputBook (props) {
   return (
     <div className="OutputDiv">
       <p>

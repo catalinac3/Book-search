@@ -1,6 +1,7 @@
 import "./App.css";
 import { Book, BookCollection } from "./Book";
 import OutputBook from "./OutputBook";
+import SearchField from "./SearchField";
 
 function App() {
   // displays all books available in the storage on the page
@@ -11,6 +12,7 @@ function App() {
   return (
     <div className="App">
       <h1> BookFinder </h1>
+      <SearchField/>
       {BookList}
     </div>
   );
