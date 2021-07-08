@@ -7,8 +7,7 @@ function SearchField(props) {
   const [Searched, setNewSearch] = useState("");
   const [Selected, setNewSelection] = useState("title");
 
- 
-  console.log(props);
+  //console.log(props);
 
   return (
     <div>
@@ -27,7 +26,7 @@ function SearchField(props) {
         >
           <option defaultValue="title">title</option>
           <option value="author">author</option>
-          <option value="date">date</option>
+          <option value="publishedDate">date</option>
         </select>
         {/*on change is trigger typing on input*/}
         <input
@@ -36,9 +35,6 @@ function SearchField(props) {
         ></input>
         <input type="submit" value="Search"></input>
       </form>
-      <p>
-        {Searched} {Selected}
-      </p>
     </div>
   );
 }
