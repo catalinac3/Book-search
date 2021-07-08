@@ -6,9 +6,9 @@ import SearchField from "./SearchField";
 
 function App() {
   // the state is the list to be displayed on the web
-  const [bookList, setNewBookList] = useState(BookCollection);
-  
-  // TODO --- message if no book is found on the database.
+  const [BookList, setNewBookList] = useState(BookCollection);
+  const [SearchStatus, setNewSearchStatus] = useState("");
+
   // TODO --- maybe sort list before displaying it.
 
   /**
@@ -38,14 +38,21 @@ function App() {
       book[searchType].toString().toLowerCase().includes(text.toLowerCase())
     );
 
+    
     setNewBookList(resultSearch);
+    const SingOrPlural = (resultSearch.length == 1) ? "entry was" :"entries were"
+    
+    resultSearch.length !== 0
+      ? setNewSearchStatus(`${resultSearch.length} ${SingOrPlural} found`)
+      : setNewSearchStatus(`No entries were found with "${text}"`);
   }
 
   return (
     <div className="App">
       <h1> BookFinder </h1>
       <SearchField submitted={search} />
-      {displayBooks(bookList)}
+      <p>{SearchStatus}</p>
+      {displayBooks(BookList)}
     </div>
   );
 }
