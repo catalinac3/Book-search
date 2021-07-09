@@ -1,0 +1,22 @@
+input {
+  border: 1px solid;
+  padding: 0.4em;
+  background-color: rgba(52, 70, 72, 0.8);;
+  color:white;
+  border-radius: 0.25em;
+}
+
+select{
+  background-color: white;
+  padding: 0.25em;
+  margin-right: 0.4em;
+  border-radius: 0.25em;
+  font-weight: bold;
+  color: rgb(52, 70, 72);
+} 
+
+option {
+ background-color:white;
+ color: rgb(52, 70, 72);
+} 
+
