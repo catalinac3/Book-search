@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./SearchField.css";
 
 function SearchField(props) {
   // State of this component Searched and Selected
@@ -6,8 +7,6 @@ function SearchField(props) {
   // useState returns and array
   const [Searched, setNewSearch] = useState("");
   const [Selected, setNewSelection] = useState("title");
-
-  //console.log(props);
 
   return (
     <div>
@@ -21,13 +20,11 @@ function SearchField(props) {
         }}
       >
         {/*on change is trigger when changing selection */}
-        <select
-          onChange={(e) => setNewSelection(e.target.value)}
-        >
+        <select onChange={(e) => setNewSelection(e.target.value)}>
           <option defaultValue="title">title</option>
           <option value="author">author</option>
           <option value="publishedDate">date</option>
-        </select>
+        </select>{" "}
         {/*on change is trigger typing on input*/}
         <input
           type="text"

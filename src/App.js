@@ -1,15 +1,18 @@
 import "./App.css";
 import { useState } from "react";
-import { Book, BookCollection } from "./Book";
+import { BookCollection } from "./Book";
 import OutputBook from "./OutputBook";
 import SearchField from "./SearchField";
+
 
 function App() {
   // the state is the list to be displayed on the web
   const [BookList, setNewBookList] = useState(BookCollection);
   const [SearchStatus, setNewSearchStatus] = useState("");
 
-  // TODO --- maybe sort list before displaying it.
+  // TODO --- think about sortierung when a book is added,
+  // first by author and then by year of publication in
+  // descendet order. Maybe also when displayed.
 
   /**
    * creates a customized component (OutputBook) for every book in the list,
@@ -21,6 +24,7 @@ function App() {
   function displayBooks(books) {
     return books.map((book) => (
       <OutputBook
+        key={book.title}
         title={book.title}
         author={book.author}
         date={book.publishedDate}
@@ -38,10 +42,10 @@ function App() {
       book[searchType].toString().toLowerCase().includes(text.toLowerCase())
     );
 
-    
     setNewBookList(resultSearch);
-    const SingOrPlural = (resultSearch.length == 1) ? "entry was" :"entries were"
-    
+    const SingOrPlural =
+      resultSearch.length == 1 ? "entry was" : "entries were";
+
     resultSearch.length !== 0
       ? setNewSearchStatus(`${resultSearch.length} ${SingOrPlural} found`)
       : setNewSearchStatus(`No entries were found with "${text}"`);
