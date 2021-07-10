@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap');
 
-h1 {
+.Home h1 {
   color: rgb(52, 70, 72);
   font-family: 'Otomanopee One', sans-serif;
 }
-.App {
+.Home {
   text-align: center;
 }
 
