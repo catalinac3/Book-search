@@ -3,6 +3,7 @@ import { useState } from "react";
 import { BookCollection } from "./Book";
 import OutputBook from "./OutputBook";
 import SearchField from "./SearchField";
+import NavButton from "./NavButton";
 
 function Home() {
   // the state is the list to be displayed on the web
@@ -50,7 +51,9 @@ function Home() {
   }
   return (
     <div className="Home">
+      <NavButton/>
       <h1> BookFinder </h1>
+     
       <SearchField submitted={search} />
       <p>{SearchStatus}</p>
       {displayBooks(BookList)}

@@ -3,9 +3,15 @@
 .Home h1 {
   color: rgb(52, 70, 72);
   font-family: 'Otomanopee One', sans-serif;
+  margin-top: 0.5em;
 }
 .Home {
   text-align: center;
+  margin: 0 auto; 
+  max-width: 400px;
+  /* display:flex;
+  flex-direction: column;
+  max-width: 400px; */
 }
 
 
