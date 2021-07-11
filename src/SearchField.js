@@ -26,11 +26,8 @@ function SearchField(props) {
           <option value="publishedDate">date</option>
         </select>{" "}
         {/*on change is trigger typing on input*/}
-        <input
-          type="text"
-          onChange={(e) => setNewSearch(e.target.value)}
-        ></input>
-        <input type="submit" value="Search"></input>
+        <input type="text" onChange={(e) => setNewSearch(e.target.value)} />
+        <input type="submit" value="Search" />
       </form>
     </div>
   );

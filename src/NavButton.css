@@ -7,7 +7,10 @@
   padding: 0.4em;
   color: rgb(52, 70, 72);
   background-color: white;
-  border-radius: 15%;
+  /* px look better than %, % are respect 
+  to the horizontal and vertical line, in a button 
+  they are not equally big, it doesn't look good */
+  border-radius: 4px;
   border: 1px solid rgb(52, 70, 72);
   box-shadow: 1px 2px 2px rgba(62, 70, 71, 0.4);
 }

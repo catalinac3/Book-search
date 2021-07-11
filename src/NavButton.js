@@ -1,19 +1,19 @@
 import { useHistory } from "react-router-dom";
 import "./NavButton.css";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 
 function NavButton() {
   const history = useHistory();
-  const addIcon =<FontAwesomeIcon icon={faPlusCircle}/>
+  const addIcon = <FontAwesomeIcon icon={faPlusCircle} />;
 
   function handleClick() {
     history.push("/addBook");
   }
- 
+
   return (
     <div className="NavButton">
-      <button onClick={handleClick}>{addIcon} Add Book</button>
+      <button onClick={handleClick}>{addIcon} Book</button>
     </div>
   );
 }
