@@ -10,9 +10,13 @@ function Home() {
   const [BookList, setNewBookList] = useState(BookCollection);
   const [SearchStatus, setNewSearchStatus] = useState("");
 
+ 
+
   // TODO --- think about sortierung when a book is added,
   // first by author and then by year of publication in
   // descendet order. Maybe also when displayed.
+
+  
 
   /**
    * creates a customized component (OutputBook) for every book in the list,
@@ -51,7 +55,7 @@ function Home() {
   }
   return (
     <div className="Home">
-      <NavButton/>
+      <NavButton nav={"/addBook"}/>
       <h1> BookFinder </h1>
      
       <SearchField submitted={search} />

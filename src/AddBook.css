@@ -6,6 +6,10 @@
   margin-bottom: 1.5em;
 }
 
+.container{
+  width: 300px;
+  margin: 0 auto;
+}
 .inputForm {
   width: 300px;
   margin: 2em auto;
