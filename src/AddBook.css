@@ -6,7 +6,7 @@
   margin-bottom: 1.5em;
 }
 
-.container{
+.container {
   width: 300px;
   margin: 0 auto;
 }
@@ -22,4 +22,8 @@
 .userInput {
   display: block;
   width: 300px;
+}
+
+.cancelIcon {
+  color: rgb(139, 0, 0);
 }

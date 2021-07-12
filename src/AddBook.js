@@ -1,15 +1,23 @@
 import "./AddBook.css";
 import { useState } from "react";
 import NavButton from "./NavButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusCircle, faWindowClose } from "@fortawesome/free-solid-svg-icons";
+import { BookCollection } from "./Book";
+import { Book } from "./Book";
 
 function AddBook() {
   const [newTitle, setNewTitle] = useState("");
   const [newAuthor, setNewAuthor] = useState("");
   const [newPDate, setNewPDate] = useState("");
+  const plusIcon = <FontAwesomeIcon icon={faPlusCircle} />;
+  const cancelIcon = (
+    <FontAwesomeIcon className="cancelIcon" icon={faWindowClose} />
+  );
 
-function add() {
-  alert("I'm the add function");
-}
+  function add() {
+    BookCollection.push(new Book(newTitle, newAuthor, newPDate))
+  }
 
   return (
     <div className="AddBook">
@@ -47,7 +55,10 @@ function add() {
             />
           </div>
         </form>
-        <NavButton nav={"/"} extraFunction={add} />
+        <NavButton nav={"/"} extraFunction={add}>
+          {plusIcon} Book
+        </NavButton>
+        <NavButton nav={"/"}>{cancelIcon} Cancel </NavButton>
       </div>
     </div>
   );
