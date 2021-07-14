@@ -8,7 +8,7 @@ export class Book {
 }
 
 // storage of all books available for search
-export const BookCollection = [
+export const InitialBookCollection = [
   new Book("Philosopher's Stone", "J. K. Rowling", 1997),
   new Book("Chamber of Secrets", "J. K. Rowling", 1998),
   new Book("Prisoner of Azkabans", "J. K. Rowling", 1999),

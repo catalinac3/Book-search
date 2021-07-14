@@ -1,6 +1,6 @@
 import "./Home.css";
-import { useState } from "react";
-import { BookCollection } from "./Book";
+import { useState, useEffect } from "react";
+import { InitialBookCollection } from "./Book";
 import OutputBook from "./OutputBook";
 import SearchField from "./SearchField";
 import NavButton from "./NavButton";
@@ -8,7 +8,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 
 function Home() {
-  // the state is the list to be displayed on the web
+  // BookCollection is the list of books at any point
+  let BookCollection = JSON.parse(localStorage.getItem("bookListStored"));
+  if (BookCollection === null) {
+    BookCollection = InitialBookCollection;
+    localStorage.setItem("bookListStored", JSON.stringify(BookCollection));
+  }
+
+
+  // list to be displayed on the website
   const [BookList, setNewBookList] = useState(BookCollection);
   const [SearchStatus, setNewSearchStatus] = useState("");
   const plusIcon = <FontAwesomeIcon icon={faPlusCircle} />;
@@ -65,3 +73,4 @@ function Home() {
 }
 
 export default Home;
+

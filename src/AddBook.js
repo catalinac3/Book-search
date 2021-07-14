@@ -3,7 +3,6 @@ import { useState } from "react";
 import NavButton from "./NavButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle, faWindowClose } from "@fortawesome/free-solid-svg-icons";
-import { BookCollection } from "./Book";
 import { Book } from "./Book";
 
 function AddBook() {
@@ -15,8 +14,21 @@ function AddBook() {
     <FontAwesomeIcon className="cancelIcon" icon={faWindowClose} />
   );
 
+  /**
+   * Adds book from the form to the list BookCollection,
+   * only when the button add Book has been pressed.
+   */
   function add() {
-    BookCollection.push(new Book(newTitle, newAuthor, newPDate))
+    if (JSON.parse(localStorage.getItem("bookListStored")) !== null) {
+      let tempList = JSON.parse(localStorage.getItem("bookListStored"));
+      tempList.push(new Book(newTitle, newAuthor, Number(newPDate)));
+      localStorage.setItem("bookListStored", JSON.stringify(tempList));
+      alert(
+        `your book ${newTitle} written by ${newAuthor}, published in ${newPDate} has been added.`
+      );
+    } else {
+      alert("addition didn't work");
+    }
   }
 
   return (
