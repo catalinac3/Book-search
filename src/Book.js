@@ -7,6 +7,20 @@ export class Book {
   }
 }
 
+ /**
+   * sorts by published date and then by author
+   * @param {Array[Book])} bList 
+   */
+  export function sortBookList(bList) {
+    bList.sort((book1, book2) => book2.publishedDate - book1.publishedDate);
+    bList.sort((book1, book2) => book1.author.localeCompare(book2.author));
+    return bList;
+    //str1.localeCompare(str2)
+    // -1 if sorted before
+    // 1 if sorted after
+    // 0 if equal
+  }
+
 // storage of all books available for search
 export const InitialBookCollection = [
   new Book("Philosopher's Stone", "J. K. Rowling", 1997),

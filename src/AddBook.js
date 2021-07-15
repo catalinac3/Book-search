@@ -3,7 +3,7 @@ import { useState } from "react";
 import NavButton from "./NavButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle, faWindowClose } from "@fortawesome/free-solid-svg-icons";
-import { Book } from "./Book";
+import { Book, sortBookList } from "./Book";
 
 function AddBook() {
   const [newTitle, setNewTitle] = useState("");
@@ -15,6 +15,10 @@ function AddBook() {
     <FontAwesomeIcon className="cancelIcon" icon={faWindowClose} />
   );
 
+  /**
+   * Verifies that all inputs are filled
+   * @returns Boolean
+   */
   function verification() {
     if (!newTitle.trim()) {
       setNewInputStatus("You forgot to write the title!");
@@ -42,11 +46,9 @@ function AddBook() {
     ) {
       let tempList = JSON.parse(localStorage.getItem("bookListStored"));
       tempList.push(new Book(newTitle, newAuthor, Number(newPDate)));
+      sortBookList(tempList);
       localStorage.setItem("bookListStored", JSON.stringify(tempList));
-      alert(
-        `your book ${newTitle} written by ${newAuthor}, published in ${newPDate} has been added.`
-      );
-      return true
+      return true;
     } else {
       return false;
     }

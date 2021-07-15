@@ -1,6 +1,6 @@
 import "./Home.css";
-import { useState, useEffect } from "react";
-import { InitialBookCollection } from "./Book";
+import { useState } from "react";
+import { InitialBookCollection, sortBookList} from "./Book";
 import OutputBook from "./OutputBook";
 import SearchField from "./SearchField";
 import NavButton from "./NavButton";
@@ -11,10 +11,9 @@ function Home() {
   // BookCollection is the list of books at any point
   let BookCollection = JSON.parse(localStorage.getItem("bookListStored"));
   if (BookCollection === null) {
-    BookCollection = InitialBookCollection;
+    BookCollection = sortBookList(InitialBookCollection);
     localStorage.setItem("bookListStored", JSON.stringify(BookCollection));
   }
-
 
   // list to be displayed on the website
   const [BookList, setNewBookList] = useState(BookCollection);
@@ -73,4 +72,3 @@ function Home() {
 }
 
 export default Home;
-
