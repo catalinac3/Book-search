@@ -6,10 +6,12 @@ function NavButton(props) {
   const history = useHistory();
 
   function handleNav(nav, extraFunction) {
-    history.push(nav);
     if (extraFunction) {
-      extraFunction();
+      if (!extraFunction()) {
+        return;
+      }
     }
+    history.push(nav);
   }
 
   return (

@@ -9,25 +9,46 @@ function AddBook() {
   const [newTitle, setNewTitle] = useState("");
   const [newAuthor, setNewAuthor] = useState("");
   const [newPDate, setNewPDate] = useState("");
+  const [inputStatus, setNewInputStatus] = useState("");
   const plusIcon = <FontAwesomeIcon icon={faPlusCircle} />;
   const cancelIcon = (
     <FontAwesomeIcon className="cancelIcon" icon={faWindowClose} />
   );
+
+  function verification() {
+    if (!newTitle.trim()) {
+      setNewInputStatus("You forgot to write the title!");
+      return false;
+    } else if (!newAuthor.trim()) {
+      setNewInputStatus("You forgot to write the author!");
+      return false;
+    } else if (!newPDate.trim()) {
+      setNewInputStatus("You forgot to write the published date!");
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   /**
    * Adds book from the form to the list BookCollection,
    * only when the button add Book has been pressed.
    */
   function add() {
-    if (JSON.parse(localStorage.getItem("bookListStored")) !== null) {
+    //trim removes whitespace from both ends of a string
+    if (
+      verification() &&
+      JSON.parse(localStorage.getItem("bookListStored")) !== null
+    ) {
       let tempList = JSON.parse(localStorage.getItem("bookListStored"));
       tempList.push(new Book(newTitle, newAuthor, Number(newPDate)));
       localStorage.setItem("bookListStored", JSON.stringify(tempList));
       alert(
         `your book ${newTitle} written by ${newAuthor}, published in ${newPDate} has been added.`
       );
+      return true
     } else {
-      alert("addition didn't work");
+      return false;
     }
   }
 
@@ -67,6 +88,7 @@ function AddBook() {
             />
           </div>
         </form>
+        <p className="alert">{inputStatus}</p>
         <NavButton nav={"/"} extraFunction={add}>
           {plusIcon} Book
         </NavButton>

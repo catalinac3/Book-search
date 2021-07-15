@@ -24,6 +24,13 @@
   width: 300px;
 }
 
-.cancelIcon {
+.cancelIcon,
+.alert {
   color: rgb(139, 0, 0);
+}
+
+.alert {
+  text-align: end;
+  margin-top: 0.5em;
+  margin-bottom: -1em;
 }
