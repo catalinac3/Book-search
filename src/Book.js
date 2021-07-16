@@ -21,7 +21,6 @@ export class Book {
     // 0 if equal
   }
 
-// storage of all books available for search
 export const InitialBookCollection = [
   new Book("Philosopher's Stone", "J. K. Rowling", 1997),
   new Book("Chamber of Secrets", "J. K. Rowling", 1998),

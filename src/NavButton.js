@@ -15,7 +15,7 @@ function NavButton(props) {
   }
 
   return (
-    <div className="NavButton">
+    <div className="NavButton" style={props.style}>
       <button onClick={() => handleNav(props.nav, props.extraFunction)}>
         {props.children}
       </button>

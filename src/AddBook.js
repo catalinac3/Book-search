@@ -5,6 +5,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle, faWindowClose } from "@fortawesome/free-solid-svg-icons";
 import { Book, sortBookList } from "./Book";
 
+const addBtnStyle = {
+  display: "inline-block",
+  float: "right",
+};
+const cancelBtnStyle = {
+  display: "inline-block",
+  float: "left",
+};
+
 function AddBook() {
   const [newTitle, setNewTitle] = useState("");
   const [newAuthor, setNewAuthor] = useState("");
@@ -16,7 +25,8 @@ function AddBook() {
   );
 
   /**
-   * Verifies that all inputs are filled
+   * Verifies that all inputs Field were filled before
+   * making a book addition
    * @returns Boolean
    */
   function verification() {
@@ -35,7 +45,7 @@ function AddBook() {
   }
 
   /**
-   * Adds book from the form to the list BookCollection,
+   * Adds book (provided in the form) to the list BookCollection,
    * only when the button add Book has been pressed.
    */
   function add() {
@@ -91,10 +101,14 @@ function AddBook() {
           </div>
         </form>
         <p className="alert">{inputStatus}</p>
-        <NavButton nav={"/"} extraFunction={add}>
-          {plusIcon} Book
-        </NavButton>
-        <NavButton nav={"/"}>{cancelIcon} Cancel </NavButton>
+        <div className="buttonsContainer">
+          <NavButton style={cancelBtnStyle} nav={"/"}>
+            {cancelIcon} Cancel{" "}
+          </NavButton>
+          <NavButton style={addBtnStyle} nav={"/"} extraFunction={add}>
+            {plusIcon} Book
+          </NavButton>
+        </div>
       </div>
     </div>
   );

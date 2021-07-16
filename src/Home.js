@@ -1,6 +1,6 @@
 import "./Home.css";
 import { useState } from "react";
-import { InitialBookCollection, sortBookList} from "./Book";
+import { InitialBookCollection, sortBookList } from "./Book";
 import OutputBook from "./OutputBook";
 import SearchField from "./SearchField";
 import NavButton from "./NavButton";
@@ -9,20 +9,16 @@ import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 
 function Home() {
   // BookCollection is the list of books at any point
-  let BookCollection = JSON.parse(localStorage.getItem("bookListStored"));
-  if (BookCollection === null) {
-    BookCollection = sortBookList(InitialBookCollection);
-    localStorage.setItem("bookListStored", JSON.stringify(BookCollection));
+  let bookCollection = JSON.parse(localStorage.getItem("bookListStored"));
+  if (bookCollection === null) {
+    bookCollection = sortBookList(InitialBookCollection);
+    localStorage.setItem("bookListStored", JSON.stringify(bookCollection));
   }
 
-  // list to be displayed on the website
-  const [BookList, setNewBookList] = useState(BookCollection);
-  const [SearchStatus, setNewSearchStatus] = useState("");
+  // bookList - list to be displayed on the website
+  const [bookList, setNewBookList] = useState(bookCollection);
+  const [searchStatus, setNewSearchStatus] = useState("");
   const plusIcon = <FontAwesomeIcon icon={faPlusCircle} />;
-
-  // TODO --- think about sortierung when a book is added,
-  // first by author and then by year of publication in
-  // descendet order. Maybe also when displayed.
 
   /**
    * creates a customized component (OutputBook) for every book in the list,
@@ -43,30 +39,32 @@ function Home() {
   }
   /**
    * search under the specification of the search type
-   * change bookList state accordingly
+   * change bookList to be display, reports search status
+   * (how many entries were found)
    * @param {String} text -- what is being searched
    * @param {String} searchType  -- is either publishedDate, author or title
    */
   function search(text, searchType) {
-    const resultSearch = BookCollection.filter((book) =>
+    const resultSearch = bookCollection.filter((book) =>
       book[searchType].toString().toLowerCase().includes(text.toLowerCase())
     );
     setNewBookList(resultSearch);
-    const SingOrPlural =
+    const singOrPlural =
       resultSearch.length === 1 ? "entry was" : "entries were";
 
     resultSearch.length !== 0
-      ? setNewSearchStatus(`${resultSearch.length} ${SingOrPlural} found`)
+      ? setNewSearchStatus(`${resultSearch.length} ${singOrPlural} found`)
       : setNewSearchStatus(`No entries were found with "${text}"`);
   }
   return (
     <div className="Home">
-      <NavButton nav={"/addBook"}>{plusIcon} Book</NavButton>
+      <NavButton style={{ textAlign: "end" }} nav={"/addBook"}>
+        {plusIcon} Book
+      </NavButton>
       <h1> BookFinder </h1>
-
       <SearchField submitted={search} />
-      <p>{SearchStatus}</p>
-      {displayBooks(BookList)}
+      <p>{searchStatus}</p>
+      {displayBooks(bookList)}
     </div>
   );
 }
