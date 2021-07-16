@@ -1,0 +1,36 @@
+.AddBook h1 {
+  color: rgb(52, 70, 72);
+  font-family: "Otomanopee One", sans-serif;
+  text-align: center;
+  margin-top: 2em;
+  margin-bottom: 1.5em;
+}
+
+.container {
+  width: 300px;
+  margin: 0 auto;
+}
+.inputForm {
+  width: 300px;
+  margin: 2em auto;
+}
+
+.label {
+  display: inline-block;
+}
+
+.userInput {
+  display: block;
+  width: 300px;
+}
+
+.cancelIcon,
+.alert {
+  color: rgb(139, 0, 0);
+}
+
+.alert {
+  text-align: end;
+  margin-top: 0.5em;
+  margin-bottom: -1em;
+}
