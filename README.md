@@ -1,6 +1,6 @@
 ## Book search app
 
-In this App you can see a list of books, search on it by title, author or publication year, and add new books to the list.
+In this App you can see a list of books, search by title, author, or publication year. You can also add new books to the list.
 
 
 Sources: 
