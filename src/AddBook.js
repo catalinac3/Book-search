@@ -102,10 +102,19 @@ function AddBook() {
         </form>
         <p className="alert">{inputStatus}</p>
         <div className="buttonsContainer">
-          <NavButton style={cancelBtnStyle} nav={"/"}>
+          <NavButton
+            toolTip={"Return to Main Page"}
+            style={cancelBtnStyle}
+            nav={"/"}
+          >
             {cancelIcon} Cancel{" "}
           </NavButton>
-          <NavButton style={addBtnStyle} nav={"/"} extraFunction={add}>
+          <NavButton
+            toolTip={"Confirm Book Addition"}
+            style={addBtnStyle}
+            nav={"/"}
+            extraFunction={add}
+          >
             {plusIcon} Book
           </NavButton>
         </div>

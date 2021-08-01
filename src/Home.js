@@ -58,7 +58,7 @@ function Home() {
   }
   return (
     <div className="Home">
-      <NavButton style={{ textAlign: "end" }} nav={"/addBook"}>
+      <NavButton toolTip={"Add a Book"} style={{ textAlign: "end" }} nav={"/addBook"}>
         {plusIcon} Book
       </NavButton>
       <h1> BookFinder </h1>
