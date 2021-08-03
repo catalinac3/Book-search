@@ -1,10 +1,18 @@
 import { IconButton } from "@material-ui/core";
-import DeleteIcon from '@material-ui/icons/Delete';
+import DeleteIcon from "@material-ui/icons/Delete";
 import React from "react";
 import "./OutputBook.css";
 
+
+
 // element that will display a book data
 function OutputBook(props) {
+  /**
+   * This function deletes a book from the list, 
+   * and re-render the page, also informs with a 
+   * message about the deletion.
+   * @param {String} elemTitle 
+   */
   function deleteBook(elemTitle) {
     console.log(elemTitle);
     let tempList = JSON.parse(localStorage.getItem("bookListStored"));
@@ -13,20 +21,25 @@ function OutputBook(props) {
     const found = tempList.find((element) => element.title === elemTitle);
     tempList.splice(tempList.indexOf(found), 1);
     localStorage.setItem("bookListStored", JSON.stringify(tempList));
-    props.deleted(`The book "${found.title}" has been erased`, tempList)
+    props.deleted(`The book "${found.title}" has been erased`, tempList);
   }
 
-  // make a cross button to erase the item 
-  // re-render the page otherwise , the item doesnt disappear
   return (
     <div className="OutputDiv">
-      <IconButton onClick={() => deleteBook(props.title)}>
-        <DeleteIcon />
-      </IconButton>
-      <p>
-        <span className="Title">{props.title}</span>, {props.author},{" "}
-        {props.date}
-      </p>
+      <div className="bookDisplay">
+        <p>
+          <span className="Title">{props.title}</span>, {props.author},{" "}
+          {props.date}
+        </p>
+      </div>
+      <div className="deleteBtn">
+        <IconButton
+          size="small"
+          onClick={() => deleteBook(props.title)}
+        >
+          <DeleteIcon fontSize="small"/>
+        </IconButton>
+      </div>
     </div>
   );
 }

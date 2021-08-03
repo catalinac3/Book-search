@@ -4,8 +4,20 @@
   background: rgb(251, 224, 195, 0.15);
   color: rgb(52, 70, 72);
   margin: 0.5em auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .Title {
   font-size: 1.2em;
+}
+
+.bookDisplay {
+  margin-left: 5px;
+  display: inline-block;
+}
+.deleteBtn {
+  display: inline-block;
+  align-self: center;
 }
