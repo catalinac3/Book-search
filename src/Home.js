@@ -30,6 +30,10 @@ function Home() {
   function displayBooks(books) {
     return books.map((book) => (
       <OutputBook
+        deleted={(msg, updatedList) => {
+          setNewSearchStatus(msg);
+          setNewBookList(updatedList);
+        }}
         key={book.title}
         title={book.title}
         author={book.author}
@@ -58,7 +62,11 @@ function Home() {
   }
   return (
     <div className="Home">
-      <NavButton toolTip={"Add a Book"} style={{ textAlign: "end" }} nav={"/addBook"}>
+      <NavButton
+        toolTip={"Add a Book"}
+        style={{ textAlign: "end" }}
+        nav={"/addBook"}
+      >
         {plusIcon} Book
       </NavButton>
       <h1> BookFinder </h1>

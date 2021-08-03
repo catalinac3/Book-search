@@ -7,7 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // Styles to be overwrited on the Tooltip
 const useStyles = makeStyles({
   tooltipPlacementBottom: {
-    bottom: "15px",
+    marginTop: "5px",
   },
 });
 
