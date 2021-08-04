@@ -9,7 +9,8 @@ import "./OutputBook.css";
 function OutputBook(props) {
   /**
    * This function deletes a book from the list, 
-   * and re-render the page, also informs with a 
+   * when the delete icon is pressed
+   * and re-render the page, also informs the user with a 
    * message about the deletion.
    * @param {String} elemTitle 
    */

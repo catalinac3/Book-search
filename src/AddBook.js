@@ -43,6 +43,25 @@ function AddBook() {
       return true;
     }
   }
+  /**
+   * checks if the title to be added already exists on the
+   * book list
+   * @param {Array} bookList
+   * @returns
+   */
+  function isNewTitle(bookList) {
+    if (
+      bookList.find(
+        (element) =>
+          element.title.toLowerCase().trim() === newTitle.toLowerCase().trim()
+      )
+    ) {
+      setNewInputStatus("This title already exists!");
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   /**
    * Adds book (provided in the form) to the list BookCollection,
@@ -55,10 +74,12 @@ function AddBook() {
       JSON.parse(localStorage.getItem("bookListStored")) !== null
     ) {
       let tempList = JSON.parse(localStorage.getItem("bookListStored"));
-      tempList.push(new Book(newTitle, newAuthor, Number(newPDate)));
-      sortBookList(tempList);
-      localStorage.setItem("bookListStored", JSON.stringify(tempList));
-      return true;
+      if (isNewTitle(tempList)) {
+        tempList.push(new Book(newTitle, newAuthor, Number(newPDate)));
+        sortBookList(tempList);
+        localStorage.setItem("bookListStored", JSON.stringify(tempList));
+        return true;
+      }
     } else {
       return false;
     }
