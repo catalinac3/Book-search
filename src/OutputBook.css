@@ -21,3 +21,12 @@
   display: inline-block;
   align-self: center;
 }
+
+@media (max-width: 500px) {
+  .OutputDiv {
+    max-width: max(100% - 10%);
+  }
+  .Title {
+    font-size: 1em;
+  }
+}
