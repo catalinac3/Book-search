@@ -43,10 +43,49 @@ function AddBook() {
       return true;
     }
   }
+  /**
+   * checks if the title to be added already exists on the
+   * book list
+   * @param {Array} bookList
+   * @returns Boolean
+   */
+  function isNewTitle(bookList) {
+    if (
+      bookList.find(
+        (element) =>
+          element.title.toLowerCase().trim() === newTitle.toLowerCase().trim()
+      )
+    ) {
+      setNewInputStatus("This title already exists!");
+      return false;
+    } else {
+      return true;
+    }
+  }
+  /**
+   * Checks if the year is valid, if is a date before today
+   * if is a number, and if it has 4 digits
+   * @returns Boolean
+   */
+  function isYear() {
+    const yearToday = new Date().getFullYear();
+    const yearFromUser = new Date(Number(newPDate), 0).getFullYear();
+    if (
+      isNaN(yearFromUser) ||
+      !(newPDate.length === 4) ||
+      yearFromUser > yearToday
+    ) {
+      setNewInputStatus("The year of publication is not valid!");
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   /**
    * Adds book (provided in the form) to the list BookCollection,
    * only when the button add Book has been pressed.
+   * @returns Boolean
    */
   function add() {
     //trim removes whitespace from both ends of a string
@@ -55,10 +94,12 @@ function AddBook() {
       JSON.parse(localStorage.getItem("bookListStored")) !== null
     ) {
       let tempList = JSON.parse(localStorage.getItem("bookListStored"));
-      tempList.push(new Book(newTitle, newAuthor, Number(newPDate)));
-      sortBookList(tempList);
-      localStorage.setItem("bookListStored", JSON.stringify(tempList));
-      return true;
+      if (isNewTitle(tempList) && isYear()) {
+        tempList.push(new Book(newTitle, newAuthor, Number(newPDate)));
+        sortBookList(tempList);
+        localStorage.setItem("bookListStored", JSON.stringify(tempList));
+        return true;
+      }
     } else {
       return false;
     }
@@ -90,7 +131,7 @@ function AddBook() {
             />
           </div>
           <div className="inputForm">
-            <label className="label">Published date:</label>
+            <label className="label">Published Year:</label>
             <input
               className="userInput"
               type="text"
@@ -102,10 +143,19 @@ function AddBook() {
         </form>
         <p className="alert">{inputStatus}</p>
         <div className="buttonsContainer">
-          <NavButton style={cancelBtnStyle} nav={"/"}>
+          <NavButton
+            toolTip={"Return to Main Page"}
+            style={cancelBtnStyle}
+            nav={"/"}
+          >
             {cancelIcon} Cancel{" "}
           </NavButton>
-          <NavButton style={addBtnStyle} nav={"/"} extraFunction={add}>
+          <NavButton
+            toolTip={"Confirm Book Addition"}
+            style={addBtnStyle}
+            nav={"/"}
+            extraFunction={add}
+          >
             {plusIcon} Book
           </NavButton>
         </div>
