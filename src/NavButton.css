@@ -1,7 +1,7 @@
 .NavButton {
   margin-top: 2em;
 }
-.NavButton button {
+button {
   font-size: 1em;
   padding: 0.4em;
   color: rgb(52, 70, 72);

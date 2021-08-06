@@ -18,6 +18,8 @@ function Home() {
   // bookList - list to be displayed on the website
   const [bookList, setNewBookList] = useState(bookCollection);
   const [searchStatus, setNewSearchStatus] = useState("");
+  // number of books displayed on the website
+  const [numberDisplayed, setNumberDisplayed] = useState(7);
   const plusIcon = <FontAwesomeIcon icon={faPlusCircle} />;
 
   /**
@@ -28,7 +30,7 @@ function Home() {
    *
    */
   function displayBooks(books) {
-    return books.map((book) => (
+    return books.slice(0, numberDisplayed).map((book) => (
       <OutputBook
         deleted={(msg, updatedList) => {
           setNewSearchStatus(msg);
@@ -49,6 +51,9 @@ function Home() {
    * @param {String} searchType  -- is either publishedDate, author or title
    */
   function search(text, searchType) {
+    // resets the number of item displayed to 7
+    // everytime a new entry is searched
+    setNumberDisplayed(7);
     const resultSearch = bookCollection.filter((book) =>
       book[searchType].toString().toLowerCase().includes(text.toLowerCase())
     );
@@ -60,6 +65,28 @@ function Home() {
       ? setNewSearchStatus(`${resultSearch.length} ${singOrPlural} found`)
       : setNewSearchStatus(`No entries were found with "${text}"`);
   }
+  /**
+   * the function renders a button div if there are more
+   * with text "Display All" if there is a need for it
+   * @returns <button/>
+   */
+  function loadMoreBtn() {
+    if (numberDisplayed <= bookList.length) {
+      return (
+        <button
+          style={{ display: "inline-block", float: "right" }}
+          onClick={() => {
+            setNumberDisplayed(bookList.length);
+            displayBooks(bookList);
+            console.log("the button was clicked!!!");
+          }}
+        >
+          Display All
+        </button>
+      );
+    }
+  }
+
   return (
     <div className="Home">
       <NavButton
@@ -73,6 +100,7 @@ function Home() {
       <SearchField submitted={search} />
       <p>{searchStatus}</p>
       {displayBooks(bookList)}
+      {loadMoreBtn()}
     </div>
   );
 }

@@ -13,6 +13,10 @@ h1{
   margin: 0 auto; 
   max-width: 400px;
 }
+/* .diplayAll {
+  display: inline-block;
+  float: right;
+} */
 
 @media (max-width: 500px) {
   h1{
