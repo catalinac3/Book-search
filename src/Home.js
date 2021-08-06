@@ -19,7 +19,7 @@ function Home() {
   const [bookList, setNewBookList] = useState(bookCollection);
   const [searchStatus, setNewSearchStatus] = useState("");
   // number of books displayed on the website
-  const [numberDisplayed, setNumberDisplayed] = useState(7);
+  const [numberDisplayed, setNumberDisplayed] = useState(5);
   const plusIcon = <FontAwesomeIcon icon={faPlusCircle} />;
 
   /**
@@ -53,7 +53,7 @@ function Home() {
   function search(text, searchType) {
     // resets the number of item displayed to 7
     // everytime a new entry is searched
-    setNumberDisplayed(7);
+    setNumberDisplayed(5);
     const resultSearch = bookCollection.filter((book) =>
       book[searchType].toString().toLowerCase().includes(text.toLowerCase())
     );
@@ -71,14 +71,13 @@ function Home() {
    * @returns <button/>
    */
   function loadMoreBtn() {
-    if (numberDisplayed <= bookList.length) {
+    if (numberDisplayed < bookList.length) {
       return (
         <button
           style={{ display: "inline-block", float: "right" }}
           onClick={() => {
             setNumberDisplayed(bookList.length);
             displayBooks(bookList);
-            console.log("the button was clicked!!!");
           }}
         >
           Display All
@@ -98,7 +97,7 @@ function Home() {
       </NavButton>
       <h1> BookFinder </h1>
       <SearchField submitted={search} />
-      <p>{searchStatus}</p>
+      <p className="message">{searchStatus}</p>
       {displayBooks(bookList)}
       {loadMoreBtn()}
     </div>

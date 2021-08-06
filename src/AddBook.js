@@ -18,7 +18,7 @@ function AddBook() {
   const [newTitle, setNewTitle] = useState("");
   const [newAuthor, setNewAuthor] = useState("");
   const [newPDate, setNewPDate] = useState("");
-  const [inputStatus, setNewInputStatus] = useState("");
+  const [inputwarning, setNewInputWarning] = useState("");
   const plusIcon = <FontAwesomeIcon icon={faPlusCircle} />;
   const cancelIcon = (
     <FontAwesomeIcon className="cancelIcon" icon={faWindowClose} />
@@ -31,13 +31,13 @@ function AddBook() {
    */
   function verification() {
     if (!newTitle.trim()) {
-      setNewInputStatus("You forgot to write the title!");
+      setNewInputWarning("You forgot to write the title!");
       return false;
     } else if (!newAuthor.trim()) {
-      setNewInputStatus("You forgot to write the author!");
+      setNewInputWarning("You forgot to write the author!");
       return false;
     } else if (!newPDate.trim()) {
-      setNewInputStatus("You forgot to write the published date!");
+      setNewInputWarning("You forgot to write the published date!");
       return false;
     } else {
       return true;
@@ -56,7 +56,7 @@ function AddBook() {
           element.title.toLowerCase().trim() === newTitle.toLowerCase().trim()
       )
     ) {
-      setNewInputStatus("This title already exists!");
+      setNewInputWarning("This title already exists!");
       return false;
     } else {
       return true;
@@ -75,7 +75,7 @@ function AddBook() {
       !(newPDate.length === 4) ||
       yearFromUser > yearToday
     ) {
-      setNewInputStatus("The year of publication is not valid!");
+      setNewInputWarning("The year of publication is not valid!");
       return false;
     } else {
       return true;
@@ -141,7 +141,7 @@ function AddBook() {
             />
           </div>
         </form>
-        <p className="alert">{inputStatus}</p>
+        <p className="alert">{inputwarning}</p>
         <div className="buttonsContainer">
           <NavButton
             toolTip={"Return to Main Page"}

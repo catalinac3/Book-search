@@ -1,12 +1,13 @@
 .OutputDiv {
   box-shadow: 1px 2px 2px rgba(62, 70, 71, 0.4);
-  padding: 0.4em;
+  padding: 0.1em;
   background: rgb(251, 224, 195, 0.15);
   color: rgb(52, 70, 72);
   margin: 0.5em auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+ 
 }
 
 .Title {
@@ -16,6 +17,7 @@
 .bookDisplay {
   margin-left: 5px;
   display: inline-block;
+  /* flex-grow: 1; */
 }
 .deleteBtn {
   display: inline-block;
