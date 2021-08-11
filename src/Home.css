@@ -8,7 +8,7 @@
 h1{
   font-size: 2.4em;
 }
-h1, .Home form {
+h1, .Home form, p {
   text-align: center;
 }
 .Home {

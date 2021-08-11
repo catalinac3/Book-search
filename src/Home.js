@@ -1,5 +1,5 @@
 import "./Home.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { InitialBookCollection, sortBookList } from "./Book";
 import OutputBook from "./OutputBook";
 import SearchField from "./SearchField";
@@ -10,13 +10,14 @@ import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 function Home() {
   // BookCollection is the list of books at any point
   let bookCollection = JSON.parse(localStorage.getItem("bookListStored"));
-  if (bookCollection === null) {
+  if (bookCollection == null) {
     bookCollection = sortBookList(InitialBookCollection);
     localStorage.setItem("bookListStored", JSON.stringify(bookCollection));
   }
 
   // bookList - list to be displayed on the website
   const [bookList, setNewBookList] = useState(bookCollection);
+  // message
   const [searchStatus, setNewSearchStatus] = useState("");
   // number of books displayed on the website
   const [numberDisplayed, setNumberDisplayed] = useState(5);
@@ -85,6 +86,21 @@ function Home() {
       );
     }
   }
+  // useEffect let you perform a side effect after every rendering
+  // second parameter [] only runs on mount
+  useEffect(() => {
+    // Check if there is a message left in the storage
+    // from the addition of a book
+    const msgAdd = localStorage.getItem("msg");
+    if (msgAdd) {
+      localStorage.removeItem("msg");
+      setNewSearchStatus(msgAdd);
+    }
+    // clean up - for the use effect
+    return () => {
+      localStorage.removeItem("msg");
+    };
+  }, []);
 
   return (
     <div className="Home">

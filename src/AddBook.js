@@ -69,10 +69,13 @@ function AddBook() {
    */
   function isYear() {
     const yearToday = new Date().getFullYear();
-    const yearFromUser = new Date(Number(newPDate), 0).getFullYear();
+    const yearFromUser = new Date(Number(newPDate.trim()), 0).getFullYear();
+    console.log(yearFromUser);
+    console.log(yearFromUser);
+
     if (
       isNaN(yearFromUser) ||
-      !(newPDate.length === 4) ||
+      !(newPDate.trim().length === 4) ||
       yearFromUser > yearToday
     ) {
       setNewInputWarning("The year of publication is not valid!");
@@ -98,6 +101,9 @@ function AddBook() {
         tempList.push(new Book(newTitle, newAuthor, Number(newPDate)));
         sortBookList(tempList);
         localStorage.setItem("bookListStored", JSON.stringify(tempList));
+        //to set message that a book has been added
+        const message = `the book "${newTitle}" has been added`
+        localStorage.setItem("msg", message);
         return true;
       }
     } else {
