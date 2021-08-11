@@ -70,8 +70,6 @@ function AddBook() {
   function isYear() {
     const yearToday = new Date().getFullYear();
     const yearFromUser = new Date(Number(newPDate.trim()), 0).getFullYear();
-    console.log(yearFromUser);
-    console.log(yearFromUser);
 
     if (
       isNaN(yearFromUser) ||

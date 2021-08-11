@@ -13,7 +13,6 @@ function OutputBook(props) {
    * @param {String} elemTitle
    */
   function deleteBook(elemTitle) {
-    console.log(elemTitle);
     let tempList = JSON.parse(localStorage.getItem("bookListStored"));
     // The find() method returns the value of the first element in the
     // provided array that satisfies the provided testing function.
